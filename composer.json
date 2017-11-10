@@ -2,5 +2,30 @@
   "name": "drupalcenter/dc-migrate",
   "description": "Provides migrations for DrupalCenter",
   "type": "drupal-module",
-  "license": "GPLv3"
+  "license": "GPLv3",
+  "authors": [
+    {
+      "name": "Stefan Borchert",
+      "email": "stefan@undpaul.de"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "name": "undpaul/up-migrate",
+      "url": "https://github.com/undpaul/up-migrate.git"
+    }
+  ],
+  "require": {
+    "undpaul/up-migrate": "dev-8.x-3.x"
+  },
+  "extra": {
+    "branch-alias": {
+      "8.x-3.x": "3.x-dev"
+    }
+  },
+  "config": {
+    "secure-http": false,
+    "sort-packages": true
+  }
 }
