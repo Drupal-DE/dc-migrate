@@ -1,0 +1,84 @@
+id: dc_user_accounts
+label: User accounts
+migration_group: drupalcenter
+destination:
+  plugin: entity:user
+source:
+  plugin: 'dc_user'
+  table:
+    name: users
+    alias: u
+    ids:
+      uid: integer
+    fields:
+      uid: 'User ID'
+      name: 'Username'
+      pass: 'Password'
+      mail: 'Email address'
+      signature: 'Signature'
+      created: 'Registration timestamp'
+      access: 'Last access timestamp'
+      login: 'Last login timestamp'
+      status: 'Account status'
+      timezone: 'Timezone'
+      language: 'Language'
+      picture: 'User picture'
+      init: 'Initial email address'
+      data: 'Additional account data'
+      roles: 'List of roles'
+  track_changes: true
+  constants:
+    format: 'wysiwyg_small'
+    langcode: 'de'
+process:
+  uid:
+    plugin: static_map
+    source: uid
+    bypass: true
+    # We need to reassign some user IDs to not override user #1 ("admin").
+    map:
+      1: 2
+      2: 3
+      3: 4
+      4: 5
+      5: 6
+      6: 7
+      8: 9
+      9: 10
+  name: name
+  pass: pass
+  mail: mail
+  created: created
+  access: access
+  login: login
+  status: status
+  timezone:
+    plugin: static_map
+    source: timezone
+    bypass: true
+    map:
+      7200: 'Europe/Berlin'
+    default: 'Europe/Berlin'
+  langcode: 'constants/langcode'
+  preferred_langcode: 'constants/langcode'
+  preferred_admin_langcode: 'constants/langcode'
+  init: init
+  roles:
+    -
+      plugin: static_map
+      source: roles
+      # Merge old role assignments.
+      map:
+        1: anonymous
+        2: authenticated
+        3: forum_member
+        4: administrator
+        9: forum_moderator
+        10: book_editor
+        14: administrator
+        15: forum_moderator
+      default_value: authenticated
+    -
+      plugin: array_unique
+  'field_signature/format': 'constants/format'
+  'field_signature/value': signature

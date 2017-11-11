@@ -1,0 +1,11 @@
+id: drupalcenter
+label: "DrupalCenter"
+description: "Migrate content from old site."
+source_type: mixed sources
+source:
+  # Set database key for all migrations.
+  key: dc_migrate
+dependencies:
+  enforced:
+    module:
+      - dc_migrate
