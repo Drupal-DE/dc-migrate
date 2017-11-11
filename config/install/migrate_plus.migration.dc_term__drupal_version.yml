@@ -1,0 +1,25 @@
+id: dc_term__drupal_version
+label: 'Term: Drupal version'
+migration_group: drupalcenter
+destination:
+  plugin: entity:taxonomy_term
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: yaml
+  urls: 'migration://fixed/term.drupal_version.yml'
+  fields:
+    _identifier: 'Unique term identifier'
+    name: 'Term name'
+    weight: 'Term weight'
+  ids:
+    _identifier:
+      type: string
+  constants:
+    bundle: 'drupal_version'
+    langcode: 'de'
+process:
+  vid: 'constants/bundle'
+  langcode: 'constants/langcode'
+  name: name
+  weight: weight

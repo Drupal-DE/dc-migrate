@@ -23,12 +23,12 @@ For further information about the command run `drush help upm-database-add`.
 above.
 2. Add the following lines to _settings.local.php_ to add the base migration
 directory:
-        ```php
+
         /**
          * Set migration source directory (relative from Drupal root).
          */
         $settings['file_migration_source_path'] = '../migration';
-        ```
+
 3. Run the migrations in the following order:
     * `drush mi dc_user_accounts --feedback=1000`
-    * `drush mi ...`
+    * `drush mi dc_term__drupal_version`
