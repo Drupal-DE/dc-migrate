@@ -1,0 +1,38 @@
+id: dc_book__handbook
+label: "Book: Handbook migration"
+migration_group: drupalcenter
+destination:
+  plugin: book
+source:
+  plugin: dc_book
+process:
+  nid:
+    -
+      plugin: migration
+      migration: dc_node__handbook
+      source: nid
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: row
+  'book/bid':
+    -
+      plugin: migration
+      migration: dc_node__handbook
+      source: bid
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: row
+  'book/weight': weight
+  'book/pid':
+    -
+      plugin: skip_on_empty
+      method: process
+      source: plid
+    -
+      plugin: migration
+      migration: dc_book__handbook
+migration_dependencies:
+  optional:
+    - dc_node__handbook
