@@ -79,6 +79,6 @@ process:
         15: forum_moderator
       default_value: authenticated
     -
-      plugin: array_unique
+      plugin: up_array_unique
   'field_signature/format': 'constants/format'
   'field_signature/value': signature
