@@ -45,3 +45,7 @@ directory:
     * `drush mi dc_node__handbook`
     * `drush mi dc_book__handbook`
     * `drush mi dc_comment__handbook`
+
+  * News:
+    * `drush mi dc_node__news`
+    * `drush mi dc_comment__news`
