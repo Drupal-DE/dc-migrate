@@ -1,0 +1,56 @@
+id: dc_user_accounts__fields
+label: "Fields: Migrate field values for user accounts"
+migration_group: drupalcenter
+destination:
+  plugin: entity:user
+source:
+  plugin: 'dc_user__fields'
+  table:
+    name: users
+    alias: u
+    ids:
+      uid: integer
+    fields:
+      uid: 'User ID'
+      signature: 'Signature'
+  track_changes: true
+  constants:
+    format: 'wysiwyg_small'
+    langcode: 'de'
+process:
+  uid:
+    plugin: migration_lookup
+    migration: dc_user_accounts
+    no_stub: true
+    source: uid
+  field_name:
+    plugin: skip_on_empty
+    method: process
+    source: fullname
+  field_company:
+    plugin: skip_on_empty
+    method: process
+    source: company
+  field_location:
+    plugin: skip_on_empty
+    method: process
+    source: location
+  'field_website/uri':
+    plugin: skip_on_empty
+    method: process
+    source: website
+  'field_signature/value': signature
+  'field_signature/format': 'constants/format'
+  'field_image':
+    -
+      plugin: skip_on_empty
+      method: process
+      source: uid
+    -
+      plugin: migration_lookup
+      migration: dc_media__user_picture
+      no_stub: true
+migration_dependencies:
+  optional:
+    - dc_user_accounts
+    - dc_media__user_picture

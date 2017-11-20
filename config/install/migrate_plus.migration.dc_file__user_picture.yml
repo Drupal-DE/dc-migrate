@@ -1,0 +1,46 @@
+id: dc_file__user_picture
+label: "File: Migrate user pictures"
+migration_group: drupalcenter
+destination:
+  plugin: entity:file
+source:
+  plugin: dc_file__user_picture
+  constants:
+    source_base: 'migration:/'
+    langcode: 'de'
+    status: 1
+process:
+  langcode: 'constants/langcode'
+  filename: filename
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base
+        - filepath
+    -
+      plugin: urlencode
+  file_destination:
+    plugin: up_string_replace
+    replacements:
+      'files/pictures/': 'public://users/'
+    source: uri
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@file_destination'
+  status: constants/status
+  uid:
+    -
+      plugin: migration
+      migration: dc_user_accounts
+      source: uid
+    -
+      plugin: skip_on_empty
+      # Do not create user picture for non-existing accounts.
+      method: row
+migration_dependencies:
+  optional:
+    - dc_user_accounts

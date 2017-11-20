@@ -49,3 +49,12 @@ directory:
   * News:
     * `drush mi dc_node__news`
     * `drush mi dc_comment__news`
+
+  * Files:
+    * `drush mi dc_file__user_picture`
+
+  * Media:
+    * `drush mi dc_media__user_picture`
+
+  * Fields:
+    * `drush mi dc_user_accounts__fields`

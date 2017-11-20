@@ -73,7 +73,7 @@ class DcSqlNode extends SqlBase {
   /**
    * {@inheritdoc}
    */
-  protected function alterFields(array &$fields = array()) {
+  protected function alterFields(array &$fields = []) {
     foreach ($this->getFieldDefinitions() as $key => $field) {
       $fields[$field['alias']] = isset($field['description']) ? $field['description'] : $key;
     }
