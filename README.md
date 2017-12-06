@@ -58,6 +58,7 @@ directory:
 
   * Media:
     * `drush mi dc_media__user_picture`
+    * `drush mi dc_media__handbook`
     * `drush mi dc_media__news`
 
   * Fields:
