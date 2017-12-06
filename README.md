@@ -54,6 +54,7 @@ directory:
     * `drush mi dc_file__user_picture`
     * `drush mi dc_file_upload__handbook`
     * `drush mi dc_file_upload__news`
+    * `drush mi dc_file_upload__forum`
 
   * Media:
     * `drush mi dc_media__user_picture`
