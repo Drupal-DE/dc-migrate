@@ -8,7 +8,7 @@ source:
 process:
   nid:
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_node__handbook
       source: nid
       no_stub: true
@@ -17,7 +17,7 @@ process:
       method: row
   'book/bid':
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_node__handbook
       source: bid
       no_stub: true
@@ -31,7 +31,7 @@ process:
       method: process
       source: plid
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_book__handbook
 migration_dependencies:
   optional:

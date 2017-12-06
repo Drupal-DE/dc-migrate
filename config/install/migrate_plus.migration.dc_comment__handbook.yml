@@ -15,11 +15,11 @@ source:
     language: 'de'
 process:
   pid:
-    plugin: migration
+    plugin: migration_lookup
     migration: dc_comment__handbook
     source: pid
   entity_id:
-    plugin: migration
+    plugin: migration_lookup
     migration: dc_node__handbook
     source: nid
   entity_type: 'constants/entity_type'
@@ -34,7 +34,7 @@ process:
       map:
         0: 1
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_user_accounts
       # Do not create a user stub if the author has not been migrated.
       no_stub: true

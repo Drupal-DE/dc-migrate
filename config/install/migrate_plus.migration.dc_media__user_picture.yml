@@ -17,7 +17,7 @@ process:
   name: filename
   uid:
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_user_accounts
       source: uid
     -
@@ -26,7 +26,7 @@ process:
       method: row
   'field_image/target_id':
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_file__user_picture
       source: uid
     -

@@ -26,7 +26,7 @@ process:
       map:
         0: 1
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_user_accounts
       # Do not create a user stub if the author has not been migrated.
       no_stub: true
@@ -59,7 +59,7 @@ process:
         1519: 'term--version-8'
         1520: 'term--version-8'
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_term__drupal_version
       no_stub: true
 migration_dependencies:

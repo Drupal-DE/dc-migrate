@@ -15,7 +15,7 @@ process:
   langcode: 'constants/langcode'
   name: name
   parent:
-    plugin: migration
+    plugin: migration_lookup
     migration: dc_term__discussion_category
     source: parent
   'description/value': description

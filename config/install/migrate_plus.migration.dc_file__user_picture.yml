@@ -34,7 +34,7 @@ process:
   status: constants/status
   uid:
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: dc_user_accounts
       source: uid
     -
