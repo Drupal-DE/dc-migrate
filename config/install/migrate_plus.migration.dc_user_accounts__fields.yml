@@ -3,6 +3,14 @@ label: "Fields: Migrate field values for user accounts"
 migration_group: drupalcenter
 destination:
   plugin: entity:user
+  overwrite_properties:
+    - field_name
+    - field_company
+    - field_location
+    - 'field_website/uri'
+    - 'field_signature/value'
+    - 'field_signature/format'
+    - field_image
 source:
   plugin: 'dc_user__fields'
   table:
@@ -41,7 +49,7 @@ process:
     source: website
   'field_signature/value': signature
   'field_signature/format': 'constants/format'
-  'field_image':
+  field_image:
     -
       plugin: skip_on_empty
       method: process
