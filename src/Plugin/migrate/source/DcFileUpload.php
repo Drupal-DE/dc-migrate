@@ -48,9 +48,9 @@ class DcFileUpload extends DcSqlFile {
     $query->join('node', 'n', 'n.nid = u.nid AND n.vid = u.vid');
 
     $query->addField('u', 'nid');
-    $query->addField('u', 'description');
-    $query->addField('u', 'list');
-    $query->addField('u', 'weight');
+    $query->addField('u', 'description', 'file_description');
+    $query->addField('u', 'list', 'file_display');
+    $query->addField('u', 'weight', 'file_weight');
 
     $query->condition('n.type', $bundle);
   }
@@ -62,7 +62,7 @@ class DcFileUpload extends DcSqlFile {
     parent::alterFields($fields);
     $fields['upload_nid'] = $this->t('Node, the file is attached to');
     $fields['file_description'] = $this->t('File description');
-    $fields['file_list'] = $this->t('List file');
+    $fields['file_display'] = $this->t('Display file');
     $fields['file_weight'] = $this->t('Weight of file in node');
   }
 
