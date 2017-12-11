@@ -1,0 +1,27 @@
+id: dc_node__handbook_faq
+label: 'Node: FAQ'
+migration_group: drupalcenter
+destination:
+  plugin: entity:node
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: yaml
+  urls: 'migration://fixed/handbook.faq.yml'
+  fields:
+    _identifier: 'Unique identifier'
+    title: 'Node title'
+  ids:
+    _identifier:
+      type: string
+  constants:
+    bundle: 'book'
+    langcode: 'de'
+    status: 1
+    owner: 1
+process:
+  type: 'constants/bundle'
+  langcode: 'constants/langcode'
+  title: title
+  status: 'constants/status'
+  uid: 'constants/owner'

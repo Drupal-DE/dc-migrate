@@ -1,0 +1,37 @@
+id: dc_book__handbook_faq
+label: "Book: Handbook migration for FAQ main page"
+migration_group: drupalcenter
+destination:
+  plugin: book
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: yaml
+  urls: 'migration://fixed/handbook.faq.yml'
+  fields:
+    _identifier: 'Unique identifier'
+    title: 'Node title'
+  ids:
+    _identifier:
+      type: string
+  constants:
+    weight: -50
+process:
+  nid:
+    -
+      plugin: migration_lookup
+      migration: dc_node__handbook_faq
+      source: _identifier
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: row
+  'book/bid':
+    -
+      plugin: migration_lookup
+      migration: dc_node__handbook_faq
+      source: _identifier
+  'book/weight': 'constants/weight'
+migration_dependencies:
+  optional:
+    - dc_node__handbook_faq

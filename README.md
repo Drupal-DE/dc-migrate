@@ -46,6 +46,13 @@ directory:
     * `drush mi dc_book__handbook`
     * `drush mi dc_comment__handbook`
 
+  * FAQ:
+    * `drush mi dc_node__handbook_faq`
+    * `drush mi dc_book__handbook_faq`
+    * `drush mi dc_node__faq`
+    * `drush mi dc_book__faq`
+    * `drush mi dc_comment__faq`
+
   * News:
     * `drush mi dc_node__news`
     * `drush mi dc_comment__news`
@@ -60,6 +67,7 @@ directory:
     * `drush mi dc_media__user_picture`
     * `drush mi dc_media__handbook`
     * `drush mi dc_media__news`
+    * `drush mi dc_media__forum`
 
   * Fields:
     * `drush mi dc_user_accounts__fields`
