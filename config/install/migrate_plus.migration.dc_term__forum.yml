@@ -1,5 +1,5 @@
-id: dc_term__discussion_category
-label: 'Term: Discussion category'
+id: dc_term__forum
+label: 'Term: Forums'
 migration_group: drupalcenter
 destination:
   plugin: entity:taxonomy_term
@@ -7,7 +7,7 @@ source:
   plugin: dc_term
   vid: 1
   constants:
-    bundle: 'discussion_category'
+    bundle: 'forums'
     format: 'wysiwyg_small'
     langcode: 'de'
 process:
@@ -16,11 +16,11 @@ process:
   name: name
   parent:
     plugin: migration_lookup
-    migration: dc_term__discussion_category
+    migration: dc_term__forum
     source: parent
   'description/value': description
   'description/format': 'constants/format'
   weight: weight
 migration_dependencies:
   optional:
-    - dc_term__discussion_category
+    - dc_term__forum
