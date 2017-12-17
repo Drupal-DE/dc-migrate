@@ -39,7 +39,7 @@ directory:
     * `drush mi dc_term__drupal_version`
     * `drush mi dc_term__showroom_category`
     * `drush mi dc_term__news_category`
-    * `drush mi dc_term__discussion_category`
+    * `drush mi dc_term__forum`
 
   * Handbook:
     * `drush mi dc_node__handbook`
@@ -56,6 +56,10 @@ directory:
   * News:
     * `drush mi dc_node__news`
     * `drush mi dc_comment__news`
+
+  * Forum:
+    * `drush mi dc_node__forum` (takes a while)
+    * `drush mi dc_comment__forum` (you may grab some coffee)
 
   * Files:
     * `drush mi dc_file__user_picture`

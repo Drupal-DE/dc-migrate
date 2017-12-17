@@ -51,7 +51,7 @@ class DcSqlNode extends SqlBase {
       throw new MigrateException('You need to specify the bundle in the plugin definition or in the migration.');
     }
     // Filter by bundle.
-    $query->condition('type', $bundle);
+    $query->condition('n.type', $bundle);
 
     // Join to {node_revisions} to include body field.
     $query->join('node_revisions', 'nr', 'n.vid = nr.vid');

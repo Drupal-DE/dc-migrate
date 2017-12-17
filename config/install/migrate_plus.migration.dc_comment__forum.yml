@@ -1,0 +1,67 @@
+id: dc_comment__forum
+label: "Comment: Migration for forum replies"
+migration_group: drupalcenter
+destination:
+  plugin: entity:thunder_forum_reply
+source:
+  plugin: dc_comment
+  bundle: 'forum'
+  constants:
+    field: 'forum_replies'
+    format: 'wysiwyg_small'
+    langcode: 'de'
+    default_langcode: 1
+process:
+  langcode: 'constants/langcode'
+  uid:
+    -
+      plugin: migration_lookup
+      migration: dc_user_accounts
+      # Do not create a stub if the reply author has not been migrated.
+      no_stub: true
+      source: uid
+    -
+      plugin: default_value
+      # Set author to admin if user has not been migrated for any reasons.
+      default_value: 1
+  nid:
+    -
+      plugin: migration_lookup
+      migration: dc_node__forum
+      source: nid
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: row
+  pfrid:
+    -
+      plugin: migration_lookup
+      migration: dc_comment__forum
+      source: pid
+      # Do not create stubs for posts that have not been migrated.
+      no_stub: true
+    -
+      plugin: default_value
+      # Set default value for top-level replies.
+      default_value: 0
+  title: subject
+  'body/value': comment
+  'body/format': 'constants/format'
+  status: status
+  created: timestamp
+  changed: timestamp
+  hostname: ipaddress
+  field_name: 'constants/field'
+  default_langcode: 'constants/default_langcode'
+
+migration_dependencies:
+  optional:
+    # May be incomplete, so make it optional.
+    - dc_user_accounts
+  required:
+    - dc_node__forum
+dependencies:
+  enforced:
+    module:
+      - dc_migrate
+      - thunder_forum_reply
