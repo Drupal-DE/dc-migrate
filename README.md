@@ -29,8 +29,12 @@ directory:
          * Set migration source directory (relative from Drupal root).
          */
         $settings['file_migration_source_path'] = '../migration';
+3. Run the following drush commands to fix some glitches in the source data:
 
-3. Run the migrations:
+    * `drush dc-fix-upload-weights --batch-size=10`
+    * `drush dc-fix-upload-weights comment --batch-size=10`
+
+4. Run the migrations:
 
   * User accounts:
     * `drush mi dc_user_accounts --feedback=1000`
