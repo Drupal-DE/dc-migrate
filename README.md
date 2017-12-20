@@ -45,6 +45,18 @@ directory:
     * `drush mi dc_term__news_category`
     * `drush mi dc_term__forum`
 
+  * Files:
+    * `drush mi dc_file__user_picture`
+    * `drush mi dc_file_upload__handbook`
+    * `drush mi dc_file_upload__news`
+    * `drush mi dc_file_upload__forum`
+
+  * Media:
+    * `drush mi dc_media__user_picture`
+    * `drush mi dc_media__handbook`
+    * `drush mi dc_media__news`
+    * `drush mi dc_media__forum`
+
   * Handbook:
     * `drush mi dc_node__handbook`
     * `drush mi dc_book__handbook`
@@ -64,18 +76,7 @@ directory:
   * Forum:
     * `drush mi dc_node__forum` (takes a while)
     * `drush mi dc_comment__forum` (you may grab some coffee)
-
-  * Files:
-    * `drush mi dc_file__user_picture`
-    * `drush mi dc_file_upload__handbook`
-    * `drush mi dc_file_upload__news`
-    * `drush mi dc_file_upload__forum`
-
-  * Media:
-    * `drush mi dc_media__user_picture`
-    * `drush mi dc_media__handbook`
-    * `drush mi dc_media__news`
-    * `drush mi dc_media__forum`
+    * `drush mi dc_fields__forum__files`
 
   * Fields:
     * `drush mi dc_user_accounts__fields`

@@ -1,0 +1,29 @@
+id: dc_fields__forum__files
+label: "Fields: Attach files uploaded to forum nodes"
+migration_group: drupalcenter
+destination:
+  plugin: entity:node
+  overwrite_properties:
+    - field_files
+source:
+  plugin: dc_upload_grouped
+  bundle: forum
+process:
+  nid:
+    plugin: migration_lookup
+    migration: dc_node__forum
+    no_stub: true
+    source: nid
+  'field_files':
+    plugin: sub_process
+    source: fids
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: dc_media__forum
+        source: fid
+        no_stub: true
+migration_dependencies:
+  required:
+    - dc_media__forum
+    - dc_node__forum
