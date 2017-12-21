@@ -1,29 +1,29 @@
-id: dc_fields__forum__files
-label: "Fields: Attach files uploaded to forum nodes"
+id: dc_fields__comment__forum__files
+label: "Fields: Attach files uploaded to forum comments"
 migration_group: drupalcenter
 destination:
-  plugin: entity:node
+  plugin: entity:thunder_forum_reply
   overwrite_properties:
     - field_files
 source:
-  plugin: dc_upload_grouped
+  plugin: dc_comment_upload_grouped
   bundle: forum
 process:
-  nid:
+  frid:
     plugin: migration_lookup
-    migration: dc_node__forum
+    migration: dc_comment__forum
     no_stub: true
-    source: nid
+    source: cid
   'field_files':
     plugin: sub_process
     source: fids
     process:
       target_id:
         plugin: migration_lookup
-        migration: dc_media__forum
+        migration: dc_media__comment__forum
         source: fid
         no_stub: true
 migration_dependencies:
   optional:
-    - dc_media__forum
+    - dc_media__comment__forum
     - dc_node__forum

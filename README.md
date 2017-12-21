@@ -38,6 +38,7 @@ directory:
 
   * User accounts:
     * `drush mi dc_user_accounts --feedback=1000`
+    * `drush mi dc_fields___user_accounts`
 
   * Terms:
     * `drush mi dc_term__drupal_version`
@@ -50,12 +51,14 @@ directory:
     * `drush mi dc_file_upload__handbook`
     * `drush mi dc_file_upload__news`
     * `drush mi dc_file_upload__forum`
+    * `drush mi dc_file_upload__comment__forum`
 
   * Media:
     * `drush mi dc_media__user_picture`
     * `drush mi dc_media__handbook`
     * `drush mi dc_media__news`
     * `drush mi dc_media__forum`
+    * `drush mi dc_media__comment__forum`
 
   * Handbook:
     * `drush mi dc_node__handbook`
@@ -77,6 +80,4 @@ directory:
     * `drush mi dc_node__forum` (takes a while)
     * `drush mi dc_comment__forum` (you may grab some coffee)
     * `drush mi dc_fields__forum__files`
-
-  * Fields:
-    * `drush mi dc_user_accounts__fields`
+    * `drush mi dc_fields__comment__forum__files`

@@ -1,4 +1,4 @@
-id: dc_user_accounts__fields
+id: dc_fields__user_accounts
 label: "Fields: Migrate field values for user accounts"
 migration_group: drupalcenter
 destination:
