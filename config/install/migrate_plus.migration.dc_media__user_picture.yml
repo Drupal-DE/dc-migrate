@@ -15,6 +15,7 @@ process:
   langcode: 'constants/langcode'
   status: 'constants/status'
   name: filename
+  created: timestamp
   uid:
     -
       plugin: migration_lookup
