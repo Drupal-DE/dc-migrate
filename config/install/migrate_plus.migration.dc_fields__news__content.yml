@@ -1,0 +1,33 @@
+id: dc_fields__news__content
+label: "Fields: Add paragraphs to content field"
+migration_group: drupalcenter
+destination:
+  plugin: entity:node
+  overwrite_properties:
+    - field_content
+source:
+  plugin: dc_upload_grouped
+  bundle: news
+process:
+  nid:
+    plugin: migration_lookup
+    migration: dc_node__news
+    no_stub: true
+    source: nid
+  'field_content/target_id':
+    # We only have one paragraph to migrate ("files") so there is no need for an
+    # iterator.
+    plugin: migration_lookup
+    migration: dc_paragraphs__files__news
+    source: vid
+    no_stub: true
+  'field_content/target_revision_id':
+    # Hopefully, the revision ID is equal to the target ID.
+    plugin: migration_lookup
+    migration: dc_paragraphs__files__news
+    source: vid
+    no_stub: true
+migration_dependencies:
+  optional:
+    - dc_node__news
+    - dc_paragraphs__files__news
