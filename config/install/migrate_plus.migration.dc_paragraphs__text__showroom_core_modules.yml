@@ -1,0 +1,30 @@
+id: dc_paragraphs__text__showroom_core_modules
+label: "Paragraphs: Create paragraphs of type 'text' for core modules in showroom nodes"
+migration_group: drupalcenter
+destination:
+  plugin: entity:paragraph
+source:
+  plugin: 'dc_paragraphs__showroom'
+  constants:
+    bundle: text
+    langcode: de
+    format: wysiwyg_small
+    parent_type: node
+    parent_field_name: field_content
+    headline: 'verwendete Core-Module'
+process:
+  type: 'constants/bundle'
+  langcode: 'constants/langcode'
+  parent_type: 'constants/parent_type'
+  parent_field_name: 'constants/parent_field_name'
+  'field_content/format': 'constants/format'
+  'field_content/value':
+    -
+      plugin: get
+      source: core_modules
+    -
+      plugin: skip_on_value
+      # Do not create a paragraph if the description is empty.
+      method: row
+      value: ''
+  field_headline: 'constants/headline'

@@ -1,0 +1,42 @@
+id: dc_fields__showroom__content
+label: "Fields: Add paragraphs to content field"
+migration_group: drupalcenter
+destination:
+  plugin: entity:node
+  overwrite_properties:
+    - field_content
+source:
+  plugin: dc_paragraphs__showroom
+process:
+  nid:
+    plugin: migration_lookup
+    migration: dc_node__showroom
+    no_stub: true
+    source: nid
+  field_content:
+    plugin: sub_process
+    source: content
+    process:
+      migration_name:
+        plugin: static_map
+        source: delta
+        map:
+          0: dc_paragraphs__text__showroom_description
+          1: dc_paragraphs__text__showroom_custom_dev
+          2: dc_paragraphs__text__showroom_core_modules
+          3: dc_paragraphs__text__showroom_contrib_modules
+      paragraphs_id:
+        plugin: up_migration_lookup_dynamic
+        migration_name: '@migration_name'
+        source: id
+        no_stub: true
+      target_id: '@paragraphs_id'
+      target_revision_id: '@paragraphs_id'
+      delta: delta
+migration_dependencies:
+  optional:
+    - dc_node__showroom
+    - dc_paragraphs__text__showroom_description
+    - dc_paragraphs__text__showroom_custom_dev
+    - dc_paragraphs__text__showroom_core_modules
+    - dc_paragraphs__text__showroom_contrib_modules

@@ -1,0 +1,42 @@
+id: dc_file_upload__showroom
+label: "File upload: Migrate files uploaded to showroom nodes"
+migration_group: drupalcenter
+destination:
+  plugin: entity:file
+source:
+  plugin: dc_file__showroom_image
+  bundle: showroom
+  constants:
+    source_base: 'migration:/'
+    langcode: 'de'
+    status: 1
+process:
+  langcode: 'constants/langcode'
+  filename: filename
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base
+        - filepath
+    -
+      plugin: urlencode
+  file_destination:
+    plugin: up_string_replace
+    replacements:
+      'files/': 'public://'
+    source: uri
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@file_destination'
+  status: constants/status
+  uid:
+    plugin: migration_lookup
+    migration: dc_user_accounts
+    source: uid
+migration_dependencies:
+  optional:
+    - dc_user_accounts

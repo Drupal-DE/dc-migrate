@@ -1,0 +1,45 @@
+id: dc_media__showroom
+label: "Media: Create media entities for files uploaded to showroom nodes."
+migration_group: drupalcenter
+destination:
+  plugin: entity:media
+source:
+  plugin: dc_file__showroom_image
+  bundle: showroom
+  constants:
+    langcode: 'de'
+    status: 1
+    bundle: 'file'
+    delta: 0
+process:
+  bundle: 'constants/bundle'
+  langcode: 'constants/langcode'
+  status: 'constants/status'
+  name: filename
+  created: timestamp
+  uid:
+    -
+      plugin: migration_lookup
+      migration: dc_user_accounts
+      source: uid
+    -
+      plugin: skip_on_empty
+      # Do not create item for non-existing accounts.
+      method: row
+  'field_file/target_id':
+    -
+      plugin: migration_lookup
+      migration: dc_file_upload__showroom
+      source: fid
+    -
+      plugin: skip_on_empty
+      # Do not create media entity if source image has not been migrated.
+      method: row
+  'field_file/display': file_display
+  'field_file/description': file_description
+  # Limited to 1 file per media entity, so the delta is fixed.
+  delta: 'constants/delta'
+migration_dependencies:
+  optional:
+    - dc_file_upload__showroom
+    - dc_user_accounts

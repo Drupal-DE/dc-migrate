@@ -1,0 +1,61 @@
+id: dc_node__showroom
+label: "Node: Migration for showroom nodes"
+migration_group: drupalcenter
+destination:
+  plugin: entity:node
+source:
+  plugin: dc_node__showroom
+  constants:
+    bundle: 'showroom'
+    format: 'wysiwyg_full'
+    language: 'de'
+process:
+  type: 'constants/bundle'
+  title: title
+  status: status
+  langcode: 'constants/language'
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  uid:
+    -
+      plugin: static_map
+      source: uid
+      bypass: true
+      map:
+        0: 1
+    -
+      plugin: migration_lookup
+      migration: dc_user_accounts
+      # Do not create a user stub if the author has not been migrated.
+      no_stub: true
+    -
+      plugin: default_value
+      # Set author to admin if user has not been migrated for any reasons.
+      default_value: 1
+  'field_showroom_url/uri': url
+  'field_showroom_category':
+    plugin: sub_process
+    source: categories
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: dc_term__showroom_category
+        source: tid
+        no_stub: true
+  'field_screenshot/target_id':
+    -
+      plugin: skip_on_empty
+      method: process
+      source: screenshot_fid
+    -
+      plugin: migration_lookup
+      migration: dc_media__showroom
+      no_stub: true
+migration_dependencies:
+  required:
+    - dc_term__drupal_version
+    - dc_term__news_category
+  optional:
+    - dc_user_accounts
