@@ -59,3 +59,4 @@ migration_dependencies:
     - dc_term__news_category
   optional:
     - dc_user_accounts
+    - dc_media__showroom
