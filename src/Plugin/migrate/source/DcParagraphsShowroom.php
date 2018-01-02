@@ -38,13 +38,13 @@ class DcParagraphsShowroom extends SqlBase {
 
     // Add used core modules.
     $query->leftJoin('term_node', 'tn1', 'tn1.nid = cs.nid');
-    $query->leftJoin('term_data', 'td1', 'td1.tid = tn1.tid AND td1.vid = :vid', [':vid' => 11]);
-    $query->addExpression("GROUP_CONCAT(DISTINCT td1.name SEPARATOR ', ')", 'core_modules');
+    $query->leftJoin('term_data', 'td1', 'td1.tid = tn1.tid AND td1.vid = :vid1', [':vid1' => 11]);
+    $query->addExpression("GROUP_CONCAT(DISTINCT td1.name ORDER BY td1.name SEPARATOR ', ')", 'core_modules');
 
     // Add used contrib modules.
     $query->leftJoin('term_node', 'tn2', 'tn2.nid = cs.nid');
-    $query->leftJoin('term_data', 'td2', 'td2.tid = tn2.tid AND td2.vid = :vid', [':vid' => 12]);
-    $query->addExpression("GROUP_CONCAT(DISTINCT td2.name SEPARATOR ', ')", 'contrib_modules');
+    $query->leftJoin('term_data', 'td2', 'td2.tid = tn2.tid AND td2.vid = :vid2', [':vid2' => 12]);
+    $query->addExpression("GROUP_CONCAT(DISTINCT td2.name ORDER BY td2.name SEPARATOR ', ')", 'contrib_modules');
 
     $query->groupBy('cs.nid');
     $query->orderBy('cs.nid');
