@@ -95,3 +95,7 @@ directory:
     * `drush mi dc_paragraphs__text__showroom_core_modules`
     * `drush mi dc_paragraphs__text__showroom_contrib_modules`
     * `drush mi dc_fields__showroom__content`
+
+5. Finalize migration:
+
+  * `drush code-update-codephp`
