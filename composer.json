@@ -13,7 +13,7 @@
     {
       "type": "vcs",
       "name": "undpaul/up-migrate",
-      "url": "https://github.com/undpaul/up-migrate.git"
+      "url": "https://github.com/Drupal-DE/up-migrate.git"
     }
   ],
   "require": {
