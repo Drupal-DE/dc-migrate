@@ -1,5 +1,5 @@
 {
-  "name": "drupalcenter/dc-migrate",
+  "name": "drupalcenter/dc_migrate",
   "description": "Provides migrations for DrupalCenter",
   "type": "drupal-module",
   "license": "GPLv3",
